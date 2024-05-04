@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1097134956380",
+    "project_id": "crops-prediction-57b7c",
+    "storage_bucket": "crops-prediction-57b7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097134956380:android:21efc1bfbfb6494391eb99",
+        "android_client_info": {
+          "package_name": "com.mu.crops_prediction.crops_prediction"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1R4i0mzB6kzuXDTTxyYlVayN_Lq6sIqI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
