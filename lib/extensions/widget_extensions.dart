@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:crops_prediction/extensions/context_extension.dart';
@@ -280,6 +281,10 @@ extension WidgetExtension on Widget {
       borderRadius: borderRadius,
       child: this,
     );
+  }
+
+  Widget rotate(double angle) {
+    return Transform.rotate(angle: pi * (angle / 180), child: this);
   }
 }
 
