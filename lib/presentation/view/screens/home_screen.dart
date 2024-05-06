@@ -22,10 +22,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late final RealtimeDataBase _realtimeDataBase;
+  late final Stream<PredictionModel> _stream;
 
   @override
   void initState() {
     _realtimeDataBase = RealtimeDataBase();
+    _stream = _realtimeDataBase.read('predictions');
     super.initState();
   }
 
@@ -49,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Crops Prediction', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
       ),
       body: StreamBuilder<PredictionModel>(
-        stream: _realtimeDataBase.read('predictions'),
+        stream: _stream,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Center(child: Text('An error occurred'));
