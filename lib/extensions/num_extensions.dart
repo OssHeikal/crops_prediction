@@ -1,41 +1,43 @@
 import 'package:flutter/material.dart';
 
 extension NumExtensions on num? {
-  double get validate => this as double? ?? 0.0;
+  num get validateNum => this ?? 0;
 
-  EdgeInsets get edgeInsetsHorizontal => EdgeInsets.symmetric(horizontal: validate);
+  double get validateDouble => validateNum.toDouble();
 
-  EdgeInsets get edgeInsetsVertical => EdgeInsets.symmetric(vertical: validate);
+  EdgeInsets get edgeInsetsHorizontal => EdgeInsets.symmetric(horizontal: validateDouble);
 
-  EdgeInsets get edgeInsetsAll => EdgeInsets.all(validate);
+  EdgeInsets get edgeInsetsVertical => EdgeInsets.symmetric(vertical: validateDouble);
 
-  EdgeInsets get edgeInsetsOnlyTop => EdgeInsets.only(top: validate);
+  EdgeInsets get edgeInsetsAll => EdgeInsets.all(validateDouble);
 
-  EdgeInsets get edgeInsetsOnlyBottom => EdgeInsets.only(bottom: validate);
+  EdgeInsets get edgeInsetsOnlyTop => EdgeInsets.only(top: validateDouble);
 
-  EdgeInsets get edgeInsetsOnlyLeft => EdgeInsets.only(left: validate);
+  EdgeInsets get edgeInsetsOnlyBottom => EdgeInsets.only(bottom: validateDouble);
 
-  EdgeInsets get edgeInsetsOnlyRight => EdgeInsets.only(right: validate);
+  EdgeInsets get edgeInsetsOnlyLeft => EdgeInsets.only(left: validateDouble);
 
-  BorderRadius get borderRadius => BorderRadius.circular(validate);
+  EdgeInsets get edgeInsetsOnlyRight => EdgeInsets.only(right: validateDouble);
+
+  BorderRadius get borderRadius => BorderRadius.circular(validateDouble);
 
   BorderRadius get leftBorderRadius => BorderRadius.only(
-        topLeft: Radius.circular(validate),
-        bottomLeft: Radius.circular(validate),
+        topLeft: Radius.circular(validateDouble),
+        bottomLeft: Radius.circular(validateDouble),
       );
 
   BorderRadius get rightBorderRadius => BorderRadius.only(
-        topRight: Radius.circular(validate),
-        bottomRight: Radius.circular(validate),
+        topRight: Radius.circular(validateDouble),
+        bottomRight: Radius.circular(validateDouble),
       );
 
   BorderRadius get topBorderRadius => BorderRadius.only(
-        topLeft: Radius.circular(validate),
-        topRight: Radius.circular(validate),
+        topLeft: Radius.circular(validateDouble),
+        topRight: Radius.circular(validateDouble),
       );
 
   BorderRadius get bottomBorderRadius => BorderRadius.only(
-        bottomLeft: Radius.circular(validate),
-        bottomRight: Radius.circular(validate),
+        bottomLeft: Radius.circular(validateDouble),
+        bottomRight: Radius.circular(validateDouble),
       );
 }

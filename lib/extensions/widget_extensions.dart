@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:crops_prediction/extensions/context_extension.dart';
 import 'package:crops_prediction/extensions/text_style_extensions.dart';
+import 'package:crops_prediction/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -85,7 +86,7 @@ extension WidgetExtension on Widget {
       height: height,
       alignment: alignment,
       margin: EdgeInsets.all(margin ?? 0),
-      padding: EdgeInsets.all(padding ?? 0.r),
+      padding: EdgeInsets.all(padding ?? 0.0),
       decoration: ShapeDecoration(
         color: color,
         shape: RoundedRectangleBorder(
@@ -111,13 +112,13 @@ extension WidgetExtension on Widget {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 25.0, sigmaY: 25.0),
         child: Container(
-          height: height ?? 60.h,
+          height: height,
           width: width,
           padding: EdgeInsets.all(padding),
           decoration: BoxDecoration(
-            color: color ?? Colors.white.withOpacity(0.4),
+            color: color ?? AppColors.secondary.withOpacity(0.4),
             borderRadius: BorderRadius.circular(radius.r),
-            border: hasBorder ? Border.all(color: color ?? Colors.white.withOpacity(0.6), width: 1.w) : null,
+            border: hasBorder ? Border.all(color: color ?? AppColors.divider.withOpacity(0.1), width: 1.w) : null,
           ),
           child: this,
         ),
@@ -279,5 +280,53 @@ extension WidgetExtension on Widget {
       borderRadius: borderRadius,
       child: this,
     );
+  }
+}
+
+extension LayoutExtensions on Widget {
+  /// With custom width
+  SizedBox withWidth(double width) => SizedBox(width: width, child: this);
+
+  /// With custom height
+  SizedBox withHeight(double height) => SizedBox(height: height, child: this);
+
+  /// With custom height and width
+  SizedBox withSize(double width, double height) => SizedBox(width: width, height: height, child: this);
+
+  ///scrollable
+  Widget scrollable({
+    EdgeInsets? padding,
+    bool primary = true,
+    bool reverse = false,
+    ScrollPhysics? physics,
+    ScrollController? controller,
+  }) {
+    return SingleChildScrollView(
+      primary: controller != null ? false : primary,
+      controller: controller,
+      padding: padding ?? const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      physics: physics ?? const AlwaysScrollableScrollPhysics(),
+      reverse: reverse,
+      child: this,
+    );
+  }
+
+  /// add Expanded to parent widget
+  Widget expand({flex = 1}) => Expanded(flex: flex, child: this);
+
+  /// add Flexible to parent widget
+  Widget flexible({flex = 1, FlexFit? fit, bool buildWhen = true}) {
+    return buildWhen ? Flexible(flex: flex, fit: fit ?? FlexFit.loose, child: this) : this;
+  }
+
+  /// add FittedBox to parent widget
+  Widget fit({BoxFit? fit, AlignmentGeometry? alignment}) {
+    return FittedBox(fit: fit ?? BoxFit.contain, alignment: alignment ?? Alignment.center, child: this);
+  }
+
+  SliverToBoxAdapter toSliver() => SliverToBoxAdapter(child: this);
+
+  Directionality withDirectionality(TextDirection textDirection) {
+    return Directionality(textDirection: textDirection, child: this);
   }
 }
