@@ -1,9 +1,11 @@
+import 'package:crops_prediction/data/datasource/realtime_data_source.dart';
 import 'package:crops_prediction/extensions/num_extensions.dart';
 import 'package:crops_prediction/extensions/widget_extensions.dart';
-import 'package:crops_prediction/presentation/view/screens/motors_screen.dart';
 import 'package:crops_prediction/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../resources/enums.dart';
 
 class ArrowButton extends StatelessWidget {
   const ArrowButton({super.key, required this.movement, this.value = Movement.stop, required this.onChanged});
@@ -21,11 +23,13 @@ class ArrowButton extends StatelessWidget {
         Icons.arrow_forward_ios,
         color: value == movement ? AppColors.secondary : AppColors.white,
       ).rotate(movement.angle),
-    ).onTap(() {
+    ).onTap(() async {
       if (value == movement) {
         onChanged(Movement.stop);
+        await RealtimeDataBase().move(Movement.stop.motorModel);
       } else {
         onChanged(movement);
+        await RealtimeDataBase().move(movement.motorModel);
       }
     }, borderRadius: 100.0.borderRadius).paddingVertical(16);
   }

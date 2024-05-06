@@ -1,3 +1,4 @@
+import 'package:crops_prediction/data/datasource/realtime_data_source.dart';
 import 'package:crops_prediction/extensions/context_extension.dart';
 import 'package:crops_prediction/extensions/string_extension.dart';
 import 'package:crops_prediction/extensions/text_style_extensions.dart';
@@ -27,6 +28,13 @@ class _MotorsScreensState extends State<MotorsScreens> {
         centerTitle: true,
         forceMaterialTransparency: true,
         backgroundColor: AppColors.primary,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () async {
+            Navigator.pop(context);
+            await RealtimeDataBase().move(Movement.stop.motorModel);
+          },
+        ),
         title: const Text('Motors', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
       ),
       body: ValueListenableBuilder(

@@ -1,7 +1,7 @@
-import 'package:crops_prediction/presentation/view/screens/motors_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../resources/enums.dart';
 import 'arrow_button.dart';
 
 class MotorMotionController extends StatelessWidget {

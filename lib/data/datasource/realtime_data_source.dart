@@ -1,3 +1,4 @@
+import 'package:crops_prediction/data/models/motor_model.dart';
 import 'package:crops_prediction/data/models/prediction_model.dart';
 import 'package:firebase_database/firebase_database.dart';
 
@@ -11,5 +12,10 @@ class RealtimeDataBase {
       return predictionModelFromJson(snapshot);
     });
     return predictionStream;
+  }
+
+  Future<void> move(MotorModel motor) async {
+    print('Moving motor: ${motor.toMap()}');
+    await _database.ref('motors').set(motor.toMap());
   }
 }
