@@ -57,42 +57,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: AnimationLimiter(
                     child: Column(
                       children: AnimationConfiguration.toStaggeredList(
-                        delay: const Duration(milliseconds: 100),
                         duration: const Duration(milliseconds: 375),
                         childAnimationBuilder: (widget) => SlideAnimation(
-                          horizontalOffset: 50.0,
+                          horizontalOffset: 100.0,
                           child: FadeInAnimation(child: widget),
                         ),
                         children: [
                           20.verticalSpace,
                           Row(
                             children: [
-                              CustomCard(
-                                title: data.nitrogen.name.capitalize(),
-                                value: data.nitrogen.value.toString(),
-                                symbol: data.nitrogen.symbol,
-                                number: data.nitrogen.atomicNumber.toString(),
-                                color: const Color(0xFFacd5ff),
-                                icon: data.nitrogen.name.svg,
-                              ).expand(),
+                              CustomCard(element: data.nitrogen, color: const Color(0xFFacd5ff)).expand(),
                               8.horizontalSpace,
-                              CustomCard(
-                                title: data.phosphorus.name.capitalize(),
-                                value: data.phosphorus.value.toString(),
-                                symbol: data.phosphorus.symbol,
-                                number: data.phosphorus.atomicNumber.toString(),
-                                color: const Color(0xFFffe473),
-                                icon: data.phosphorus.name.svg,
-                              ).expand(),
+                              CustomCard(element: data.phosphorus, color: const Color(0xFFffe473)).expand(),
                               8.horizontalSpace,
-                              CustomCard(
-                                title: data.potassium.name.capitalize(),
-                                value: data.potassium.value.toString(),
-                                symbol: data.potassium.symbol,
-                                number: data.potassium.atomicNumber.toString(),
-                                color: const Color(0xFF99f5dc),
-                                icon: data.potassium.name.svg,
-                              ).expand(),
+                              CustomCard(element: data.potassium, color: const Color(0xFF99f5dc)).expand(),
                             ],
                           ),
                           20.verticalSpace,

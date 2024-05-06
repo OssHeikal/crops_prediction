@@ -1,30 +1,22 @@
 import 'dart:ui';
+
 import 'package:animated_flip_counter/animated_flip_counter.dart';
-import 'package:crops_prediction/extensions/num_extensions.dart';
-import 'package:crops_prediction/extensions/widget_extensions.dart';
-import 'package:crops_prediction/presentation/view/widgets/element_widget.dart';
-import 'package:crops_prediction/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomCard extends StatelessWidget {
-  const CustomCard({
-    super.key,
-    required this.title,
-    required this.value,
-    required this.symbol,
-    required this.number,
-    required this.color,
-    required this.icon,
-  });
+import 'package:crops_prediction/data/models/element_model.dart';
+import 'package:crops_prediction/extensions/num_extensions.dart';
+import 'package:crops_prediction/extensions/string_extension.dart';
+import 'package:crops_prediction/extensions/widget_extensions.dart';
+import 'package:crops_prediction/presentation/view/widgets/element_widget.dart';
+import 'package:crops_prediction/resources/app_colors.dart';
 
-  final String title;
-  final String value;
-  final String symbol;
-  final String number;
+class CustomCard extends StatelessWidget {
+  const CustomCard({super.key, required this.element, required this.color});
+
+  final ElementModel element;
   final Color color;
-  final String icon;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +31,7 @@ class CustomCard extends StatelessWidget {
               alignment: Alignment.topLeft,
               padding: 8.edgeInsetsAll,
               decoration: const BoxDecoration(color: AppColors.secondary),
-              child: SvgPicture.asset(icon, height: 40, width: 40),
+              child: SvgPicture.asset(element.name.svg, height: 40, width: 40),
             ),
           ),
         ),
@@ -48,10 +40,14 @@ class CustomCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElementWidget(character: symbol, number: number, color: color),
+              ElementWidget(character: element.symbol, number: element.atomicNumber.toString(), color: color),
               10.verticalSpace,
-              Text(title, style: const TextStyle(fontSize: 12, color: AppColors.textSecondary)),
-              AnimatedFlipCounter(suffix: '%', duration: const Duration(milliseconds: 500), value: double.parse(value))
+              Text(element.name, style: const TextStyle(fontSize: 12, color: AppColors.textSecondary)),
+              AnimatedFlipCounter(
+                suffix: '%',
+                duration: const Duration(milliseconds: 500),
+                value: element.value.toDouble(),
+              )
             ],
           ).paddingSymmetric(10.r, 14.r).withGlassEffect(radius: 12.r),
         ),
