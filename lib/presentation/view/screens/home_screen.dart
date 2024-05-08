@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
               )
               .paddingEnd(14)
         ],
-        title: const Text('Crops Prediction', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+        title: Text('Crops Prediction', style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold)),
       ),
       body: StreamBuilder<PredictionModel>(
         stream: _stream,
@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Column(children: [MoistureGauge(value: data.moisture.toDouble())]),
               Positioned(
-                top: 0.42.sh,
+                top: 0.75.sw,
                 left: 0,
                 right: 0,
                 child: AnimationLimiter(

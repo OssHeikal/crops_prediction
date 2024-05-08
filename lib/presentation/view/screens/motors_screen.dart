@@ -35,7 +35,7 @@ class _MotorsScreensState extends State<MotorsScreens> {
             await RealtimeDataBase().move(Movement.stop.motorModel);
           },
         ),
-        title: const Text('Motors', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+        title: Text('Motors', style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold)),
       ),
       body: ValueListenableBuilder(
         valueListenable: _movement,

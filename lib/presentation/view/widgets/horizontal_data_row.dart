@@ -15,11 +15,11 @@ class HorizontalDataRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+        Text(title, style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold)),
         if (double.tryParse(value) != null)
           AnimatedFlipCounter(suffix: 'mm', value: double.parse(value), fractionDigits: 1)
         else
-          Text(value, style: const TextStyle(fontSize: 14)),
+          Text(value, style: TextStyle(fontSize: 14.sp)),
       ],
     ).setContainerToView(
       padding: 16.r,

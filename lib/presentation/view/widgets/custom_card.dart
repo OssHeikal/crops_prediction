@@ -31,7 +31,7 @@ class CustomCard extends StatelessWidget {
               alignment: Alignment.topLeft,
               padding: 8.edgeInsetsAll,
               decoration: const BoxDecoration(color: AppColors.secondary),
-              child: SvgPicture.asset(element.name.svg, height: 40, width: 40),
+              child: SvgPicture.asset(element.name.svg, height: 40.sp, width: 40.sp),
             ),
           ),
         ),
@@ -42,7 +42,7 @@ class CustomCard extends StatelessWidget {
             children: [
               ElementWidget(character: element.symbol, number: element.atomicNumber.toString(), color: color),
               10.verticalSpace,
-              Text(element.name, style: const TextStyle(fontSize: 12, color: AppColors.textSecondary)),
+              Text(element.name, style: TextStyle(fontSize: 12.sp, color: AppColors.textSecondary)),
               AnimatedFlipCounter(
                 suffix: '%',
                 duration: const Duration(milliseconds: 500),
