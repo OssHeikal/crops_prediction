@@ -3,12 +3,14 @@ class MotorModel {
   final bool isBackward;
   final bool isLeft;
   final bool isRight;
+  final bool waterPump;
 
   MotorModel({
     required this.isForward,
     required this.isBackward,
     required this.isLeft,
     required this.isRight,
+    this.waterPump = false,
   });
 
   MotorModel copyWith({
@@ -16,12 +18,14 @@ class MotorModel {
     bool? isBackward,
     bool? isLeft,
     bool? isRight,
+    bool? waterPump,
   }) {
     return MotorModel(
       isForward: isForward ?? this.isForward,
       isBackward: isBackward ?? this.isBackward,
       isLeft: isLeft ?? this.isLeft,
       isRight: isRight ?? this.isRight,
+      waterPump: waterPump ?? this.waterPump,
     );
   }
 
@@ -31,6 +35,7 @@ class MotorModel {
       'backward': isBackward,
       'left': isLeft,
       'right': isRight,
+      'water_pump': waterPump,
     };
   }
 
@@ -40,6 +45,7 @@ class MotorModel {
       isBackward: map['backward'],
       isLeft: map['left'],
       isRight: map['right'],
+      waterPump: map['water_pump'],
     );
   }
 }

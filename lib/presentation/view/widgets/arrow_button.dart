@@ -8,11 +8,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../resources/enums.dart';
 
 class ArrowButton extends StatelessWidget {
-  const ArrowButton({super.key, required this.movement, this.value = Movement.stop, required this.onChanged});
+  const ArrowButton({
+    super.key,
+    required this.movement,
+    this.value = Movement.stop,
+    this.waterPump = false,
+    required this.onChanged,
+  });
 
   final Movement movement;
   final Movement value;
   final ValueChanged<Movement> onChanged;
+  final bool waterPump ;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +33,10 @@ class ArrowButton extends StatelessWidget {
     ).onTap(() async {
       if (value == movement) {
         onChanged(Movement.stop);
-        await RealtimeDataBase().move(Movement.stop.motorModel);
+        await RealtimeDataBase().move(Movement.stop.motorModel.copyWith(waterPump: waterPump));
       } else {
         onChanged(movement);
-        await RealtimeDataBase().move(movement.motorModel);
+        await RealtimeDataBase().move(movement.motorModel.copyWith(waterPump: waterPump));
       }
     }, borderRadius: 100.0.borderRadius).paddingVertical(16);
   }
